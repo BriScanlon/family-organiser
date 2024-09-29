@@ -1,47 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './WeeklyAgenda.css';
 
 const WeeklyAgenda = ({ tasksByDay }) => {
-  // Generate the next 7 days
-  console.log('Tasks by day: ', JSON.stringify(tasksByDay));
+    const today = new Date();
+    const daysOfWeek = Array.from({ length: 7 }, (_, i) => {
+        const date = new Date(today);
+        date.setDate(today.getDate() + i);
+        return {
+            day: date.toLocaleString('default', { weekday: 'long' }),
+            date: date.toLocaleDateString('en-GB'),
+        };
+    });
 
+    // Track hovered day and task
+    const [hoveredDay, setHoveredDay] = useState(null);
+    const [hoveredTask, setHoveredTask] = useState(null);
 
-  const today = new Date();
-  const daysOfWeek = Array.from({ length: 7 }, (_, i) => {
-    const date = new Date(today);
-    date.setDate(today.getDate() + i);
-    return {
-      day: date.toLocaleString('default', { weekday: 'long' }),
-      date: date.toLocaleDateString('en-GB'),
-    };
-  });
+    return (
+        <div className="weekly-agenda">
+            {daysOfWeek.map((dayInfo, dayIndex) => (
+                <div
+                    key={dayIndex}
+                    className="agenda-day"
+                    onMouseEnter={() => setHoveredDay(dayIndex)}
+                    onMouseLeave={() => { setHoveredDay(null); setHoveredTask(null); }}
+                    onTouchStart={() => setHoveredDay(dayIndex)}
+                >
+                    <div className="day-header">
+                        <span className="date">{dayInfo.date}</span>
+                    </div>
+                    <ul className="task-list">
+                        {tasksByDay[dayInfo.date]?.length > 0 ? (
+                            tasksByDay[dayInfo.date]
+                                .sort((a, b) => a.time.localeCompare(b.time))
+                                .map((taskObj, taskIdx) => (
+                                    <li
+                                        key={taskIdx}
+                                        className="task-item"
+                                        style={{ backgroundColor: taskObj.color }}  // Apply the background color
+                                        onMouseEnter={() => setHoveredTask(taskIdx)}
+                                        onMouseLeave={() => setHoveredTask(null)}
+                                        onTouchStart={() => setHoveredTask(taskIdx)}
+                                    >
+                                        <span className="task-time">{taskObj.time}</span>
 
-  return (
-    <div className="weekly-agenda">
-      {daysOfWeek.map((dayInfo, index) => (
-        <div key={index} className="agenda-day">
-          <div className="day-header">
-            <span className="day">{dayInfo.day}</span>
-            <span className="date">{dayInfo.date}</span>
-          </div>
-          <ul className="task-list">
-            {tasksByDay[dayInfo.date]?.length > 0 ? (
-              // Sort tasks by time before rendering
-              tasksByDay[dayInfo.date]
-                .sort((a, b) => a.time.localeCompare(b.time))
-                .map((taskObj, idx) => (
-                  <li key={idx} className="task-item">
-                    <span className="task-time">{taskObj.time}</span> {taskObj.task}
-                  </li>
-                ))
-            ) : (
-              <li className="no-tasks">No tasks</li>
-            )}
-          </ul>
+                                        {/* Pop-over shows only if this task is hovered */}
+                                        {hoveredDay === dayIndex && hoveredTask === taskIdx && (
+                                            <div className="popover">
+                                                <div className="popover-time">{taskObj.time}</div>
+                                                <div className="popover-person">Person: {taskObj.person}</div>
+                                                <div className="popover-task">{taskObj.task}</div>
+                                            </div>
+                                        )}
+                                    </li>
+                                ))
+                        ) : (
+                            <li className="no-tasks">No tasks</li>
+                        )}
+                    </ul>
+                </div>
+            ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 };
 
 export default WeeklyAgenda;

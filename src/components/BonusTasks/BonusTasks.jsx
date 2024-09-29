@@ -1,11 +1,11 @@
 import React from 'react';
-import '../WeeklyAgenda/WeeklyAgenda.css'; // Using the same CSS file
+import '../WeeklyAgenda/WeeklyAgenda2.css'; // Using the same CSS file
 
 const BonusTasks = ({ bonusTasks }) => {
 
     return (
         <>
-            <div className='table-item'>
+            <div className='task-item'>
                 <div className='agenda-day'>
                     <div className="day-header">Bonus Tasks</div>
                     <ul className="task-list">

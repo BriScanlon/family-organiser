@@ -1,5 +1,5 @@
 import React from 'react';
-import '../WeeklyAgenda/WeeklyAgenda.css'; // Using the same CSS file
+import '../WeeklyAgenda/WeeklyAgenda2.css'; // Using the same CSS file
 
 const ToDoList = ({ tasks }) => {
   // Sort tasks by priority in descending order

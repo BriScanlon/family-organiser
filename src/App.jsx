@@ -12,19 +12,25 @@ import LeagueTable from './components/LeagueTable/LeagueTable';
 function App() {
   const [count, setCount] = useState(0)
 
+  if (navigator.userAgent.includes("Silk")) {
+    document.body.classList.add("silk-browser");
+  } else {
+    console.log('not a silk browser')
+  }
+
   return (
     <>
       <WeeklyAgenda
         tasksByDay={{
           "29/09/2024": [
-            { time: "17:00", task: "Family Dinner" },
+            { time: "17:00", task: "Family Dinner", person: "Daddy", color: "red" },
           ],
           "30/09/2024": [
-            { time: "09:00", task: "Brian - Bloc Digital" },
-            { time: "19:30", task: "Evelyn - Rehearsal" }
+            { time: "09:00", task: "Bloc Digital", person: "Daddy", color: "red" },
+            { time: "19:30", task: "Rehearsal", person: "Evelyn", color: "green" }
           ],
           "01/10/2024": [
-            { time: "12:00", task: "Brian - Uni" }
+            { time: "12:00", task: "Uni", person: "Daddy", color: "red" }
           ]
         }} />
 

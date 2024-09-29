@@ -1,5 +1,5 @@
 import React from 'react';
-import '../WeeklyAgenda/WeeklyAgenda.css';
+import '../WeeklyAgenda/WeeklyAgenda2.css';
 
 const LeagueTable = ({ leagueData }) => {
     return (
