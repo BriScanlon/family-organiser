@@ -1,0 +1,72 @@
+.weekly-agenda {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 10px;
+  }
+  
+  .agenda-day {
+    flex: 1;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 15rem;
+  }
+  
+  .day-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #555;
+  }
+  
+  .day-header .day {
+    display: block;
+  }
+  
+  .day-header .date {
+    color: #555;
+    font-size: 1rem;
+  }
+  
+  .task-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .task-item {
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #555;
+  }
+  
+  .task-time {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .no-tasks {
+    color: #888;
+    font-style: italic;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .weekly-agenda {
+      flex-direction: column;
+    }
+  
+    .agenda-day {
+      margin-bottom: 15px;
+    }
+  }
+  
