@@ -1,9 +1,12 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+// Style
 import './App.css'
+
+// Components
 import WeeklyAgenda from './components/WeeklyAgenda';
 import ToDoList from './components/ToDoList/ToDoList';
+import BonusTasks from './components/BonusTasks';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -47,8 +50,11 @@ function App() {
         ]}
       />
 
-
-
+      <BonusTasks
+        bonusTasks={[
+          { title: "Create first python app", pointsValue: "250" }
+        ]}
+      />
     </>
   )
 }
