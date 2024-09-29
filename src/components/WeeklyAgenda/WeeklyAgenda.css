@@ -1,8 +1,40 @@
 .weekly-agenda {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 0;
   gap: 10px;
+  width: 100%;
+}
+
+.table-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap */
+  justify-content: space-between; /* Space between items */
+  gap: 5rem; /* Space between items */
+  width: 100%; /* Full width for the container */
+  height: 100%;
+}
+
+.table-item {
+  flex: 0 1 25rem; /* Do not grow, shrink if needed, and set the basis to 25rem */
+  max-width: 25rem; /* Set max width to 25rem */
+  width: 100%; /* Ensure width is responsive, within the max-width constraint */
+  background-color: #f7f7f7; /* Optional: Background color */
+  padding: 1rem; /* Optional: Padding for spacing inside items */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Shadow for better visuals */
+  border-radius: 8px; /* Optional: Rounded corners */
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    gap: 2rem; /* Adjust gap for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .table-item {
+    max-width: 100%; /* Allow items to take full width on smaller screens */
+  }
 }
 
 .agenda-day {
@@ -44,8 +76,6 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
   color: #555;
 }
 
@@ -97,4 +127,32 @@
   font-weight: bold;
   color: #ff4c4c;
   margin-top: 5px;
+}
+
+.task-points {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+}
+
+.task-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.league-table-container {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+h2.day-header {
+  text-align: center;
+  margin-bottom: 20px;
 }

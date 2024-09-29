@@ -6,7 +6,7 @@ const ToDoList = ({ tasks }) => {
   const sortedTasks = [...tasks].sort((a, b) => b.priority - a.priority);
 
   return (
-    <div className="weekly-agenda">
+    <div className="task-item">
       <div className="agenda-day">
         <div className="day-header">Outstanding Tasks</div>
         <ul className="task-list">

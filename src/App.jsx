@@ -7,6 +7,7 @@ import './App.css'
 import WeeklyAgenda from './components/WeeklyAgenda';
 import ToDoList from './components/ToDoList/ToDoList';
 import BonusTasks from './components/BonusTasks';
+import LeagueTable from './components/LeagueTable/LeagueTable';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,34 +28,46 @@ function App() {
           ]
         }} />
 
-      <ToDoList
-        tasks={[
-          {
-            assignedTo: 'Daddy',
-            title: 'Clean out the Guinea Pigs',
-            deadline: '2024-09-30T14:00',
-            priority: 3,
-          },
-          {
-            assignedTo: 'Evelyn',
-            title: 'Homework',
-            deadline: '2024-09-29T16:00',
-            priority: 1,
-          },
-          {
-            assignedTo: 'Rafe',
-            title: 'Homework',
-            deadline: '2024-09-29T16:00',
-            priority: 1,
-          },
-        ]}
-      />
+      <div className='table-container'>
+        <ToDoList
+          tasks={[
+            {
+              assignedTo: 'Daddy',
+              title: 'Clean out the Guinea Pigs',
+              deadline: '2024-09-30T14:00',
+              priority: 3,
+            },
+            {
+              assignedTo: 'Evelyn',
+              title: 'Homework',
+              deadline: '2024-09-29T16:00',
+              priority: 1,
+            },
+            {
+              assignedTo: 'Rafe',
+              title: 'Homework',
+              deadline: '2024-09-29T16:00',
+              priority: 1,
+            },
+          ]}
+        />
 
-      <BonusTasks
-        bonusTasks={[
-          { title: "Create first python app", pointsValue: "250" }
-        ]}
-      />
+        <BonusTasks
+          bonusTasks={[
+            { title: "Create first python app", pointsValue: "250" }
+          ]}
+        />
+
+        <LeagueTable leagueData={
+          [
+            { position: 1, person: 'Mummy', points: 1200 },
+            { position: 2, person: 'Daddy', points: 1150 },
+            { position: 3, person: 'Evelyn', points: 1125 },
+            { position: 3, person: 'Rafe', points: 1125 },
+          ]
+        }
+        />
+      </div>
     </>
   )
 }

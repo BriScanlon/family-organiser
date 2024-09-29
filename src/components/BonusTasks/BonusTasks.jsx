@@ -5,7 +5,7 @@ const BonusTasks = ({ bonusTasks }) => {
 
     return (
         <>
-            <div className='weekly-agenda'>
+            <div className='table-item'>
                 <div className='agenda-day'>
                     <div className="day-header">Bonus Tasks</div>
                     <ul className="task-list">
